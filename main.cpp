@@ -5,19 +5,20 @@ using namespace std;
 
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors;
+    map<string, tuple<int, string, string>> villagers;
+    // key: villager name, data: friendship level, species, catchprase
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
-    villagerColors["Raymond"] = {"Black", "Gray", "White"};
-    villagerColors.insert({"Marshal", {"Blue", "White", "Black"}});
+    villagers["Apollo"] = {7, "Eagle", "pah"};
+    villagers["Carmen"] = {10, "Rabbit", "nougat"};
+    villagers.insert({"Fang", {5, "Wolf", "cha-chomp"}});
 
     // access the map using a range-based for loop
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
-    for (auto pair : villagerColors) {
+    for (auto pair : villagers) {
         cout << pair.first << ": ";
-        for (auto color : pair.second)
+        // for loop to iterate
             cout << color << " ";
         cout << endl;
     }
