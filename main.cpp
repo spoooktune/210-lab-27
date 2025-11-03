@@ -5,11 +5,13 @@ using namespace std;
 
 int main_menu(){
     int option = 0;
-    while (option != 1 && option != 2 && option != 3 && option != 4){
-        cout << "1. Increase Friendship" << endl;
-        cout << "2. Decrease Friendship" << endl;
-        cout << "3. Search For Villager" << endl;
-        cout << "4. Exit" << endl << endl;
+    while (option != 1 && option != 2 && option != 3 && option != 4 && option != 5 && option != 6){
+        cout << "1. Add Villager" << endl;
+        cout << "2. Delete Villager" << endl;
+        cout << "3. Increase Friendship" << endl;
+        cout << "4. Decrease Friendship" << endl;
+        cout << "5. Search For Villager" << endl;
+        cout << "6. Exit" << endl << endl;
         cout << "Choose an option: ";
         cin >> option;
     }
@@ -25,9 +27,29 @@ int main() {
     villagers.insert({"Fang", {5, "Wolf", "cha-chomp"}});
 
     int option = main_menu();
-    while (option != 4){
+    string n, s, cp;
+    int fl;
+    while (option != 6){
         switch (option){
             case 1:
+                cout << "Villager Name: ";
+                cin >> n;
+                cout << "Friendship Level: ";
+                cin >> fl;
+                cout << "Species: ";
+                cin >> s;
+                cout << "Catchphrase: ";
+                cin >> cp;
+                villagers.insert({n, {fl, s, cp}});
+                cout << n << " added" << endl << endl;
+                break;
+            case 2:
+                cout << "Choose villager to be deleted: ";
+                cin >> n;
+                villagers.erase(n);
+                cout << n << " deleted" << endl << endl;
+                break;
+            case 3:
                 for (auto& pair : villagers){
                     auto& tup = pair.second;
                     get<0>(tup)++;
@@ -35,7 +57,7 @@ int main() {
                         get<0>(tup) = 10;
                 }
                 break;
-            case 2:
+            case 4:
                 for (auto& pair : villagers){
                     auto& tup = pair.second;
                     get<0>(tup)--;
@@ -43,7 +65,7 @@ int main() {
                         get<0>(tup) = 1;
                 }
                 break;
-            case 3:
+            case 5:
                 string name;
                 cout << "Enter villager name: ";
                 cin >> name;
@@ -68,39 +90,6 @@ int main() {
         cout << endl;
         option = main_menu();
     }
-    /*
-    // access the map using a range-based for loop
-    cout << "Villager Data (range-based for loop):" << endl;
-    for (auto pair : villagers) {
-        cout << pair.first << " [";
-        auto [friendship, species, catchphrase] = it->second;
-        cout << "[" << friendship << ", " << species << ", " << catchphrase << "]" << endl;
-    }
-    cout << endl;
 
-    // access the map using iterators
-    
-    cout << "Villager Data:" << endl;
-    for (map<string, tuple<int, string, string>>::iterator it = villagers.begin(); it != villagers.end(); ++it) {
-        cout << it->first << ": ";
-        auto [friendship, species, catchphrase] = it->second;
-        cout << "[" << friendship << ", " << species << ", " << catchphrase << "]" << endl;
-    }
-    cout << endl;
-
-    // delete an element
-    villagers.erase("Carmen");
-    cout << "Carmen deleted" << endl;
-
-    // search for an element using .find() to avoid errors
-    
-    string searchKey = "Fang";
-    
-
-    // report size, clear, report size again to confirm map operations
-    cout << "Size before clear: " << villagers.size() << endl;
-    villagers.clear();
-    cout << "Size after clear: " << villagers.size() << endl;
-    */
     return 0;
 }
