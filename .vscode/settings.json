@@ -3,6 +3,8 @@
         "vector": "cpp",
         "xutility": "cpp",
         "tuple": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "utility": "cpp",
+        "xtree": "cpp"
     }
 }
