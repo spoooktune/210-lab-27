@@ -28,13 +28,19 @@ int main() {
     while (option != 4){
         switch (option){
             case 1:
-                for (auto pair : villagers){
-                    get<0>(pair.second)++;
+                for (auto& pair : villagers){
+                    auto& tup = pair.second;
+                    get<0>(tup)++;
+                    if (get<0>(tup) > 10)
+                        get<0>(tup) = 10;
                 }
                 break;
             case 2:
-                for (auto pair : villagers){
-                    get<0>(pair.second)--;
+                for (auto& pair : villagers){
+                    auto& tup = pair.second;
+                    get<0>(tup)--;
+                    if (get<0>(tup) < 1)
+                        get<0>(tup) = 1;
                 }
                 break;
             case 3:
